@@ -16,8 +16,15 @@ spec:
         api: external        
     spec:
       containers:
-      - image: sakkawy/udagram-frontend
+      - image: sakkawy/udagram-frontend:v6
         name: frontend
         imagePullPolicy: Always          
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"

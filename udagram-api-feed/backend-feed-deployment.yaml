@@ -2,30 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: api-feed
-  name: api-feed
+    service: backend-feed
+  name: backend-feed
 spec:
   replicas: 2
   selector:
     matchLabels:
-      service: api-feed
+      service: backend-feed
   template:
     metadata:
       labels:
-        service: api-feed
+        service: backend-feed
     spec:
       containers:
       - image: sakkawy/udagram-api-feed
-        name: api-feed
+        name: backend-feed
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
         resources:
           requests:
-            memory: "4024Mi"
+            memory: "64Mi"
             cpu: "250m"
           limits:
-            memory: "5024Mi"
+            memory: "2048Mi"
             cpu: "500m"                  
         envFrom:
           - secretRef:
