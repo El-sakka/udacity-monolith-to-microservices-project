@@ -16,7 +16,18 @@ spec:
     spec:
       containers:
       - image: sakkawy/udagram-api-user
-        name: backend-user
+        env: 
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_USERNAME
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_PASSWORD      
+        name: api-user
         ports:
         - containerPort: 8080 
         imagePullPolicy: Always  
