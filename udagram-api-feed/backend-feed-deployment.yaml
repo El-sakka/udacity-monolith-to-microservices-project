@@ -16,6 +16,17 @@ spec:
     spec:
       containers:
       - image: sakkawy/udagram-api-feed
+        env: 
+          - name: POSTGRES_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_USERNAME
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: env-secret
+                key: POSTGRES_PASSWORD
         name: api-feed
         ports:
         - containerPort: 8080
